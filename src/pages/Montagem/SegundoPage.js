@@ -19,6 +19,7 @@ export default class SegundoPage extends React.Component {
 
   }
   
+  
   componentDidMount(){
     if(this.state.bebida.length == 0){
       this.buscarDado();
@@ -92,7 +93,7 @@ export default class SegundoPage extends React.Component {
       somar = somar + preparo[i].volume;
     }
     console.log(somar)
-    if(somar <= 475){
+    if(somar <= 475 && somar > 0){
 
       for(let i=0; i<this.state.bebida.length; i++){
           if(preparo[i].sel == 0)delete preparo[i];
@@ -101,7 +102,17 @@ export default class SegundoPage extends React.Component {
         const reference = ref(db, 'Preparo/');
         set(reference, preparo);
         this.props.navigation.navigate('TerceiraPage');
-    }else {
+        this.setState({
+          bebida: [],
+          somar: 0
+        })
+        this.buscarDado();
+
+    }
+    if(somar == 0 ) {
+      Alert.alert("Favor adicione bebidas")
+    }
+    if(somar > 475) {
       Alert.alert("Acima do limite")
     }
   }

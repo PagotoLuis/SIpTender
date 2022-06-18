@@ -35,6 +35,8 @@ target 'SipTender' do
 
   pod 'react-native-ble-plx', :path => '../node_modules/react-native-ble-plx'
 
+  pod 'RNExitApp', :path => '../node_modules/react-native-exit-app'
+
   target 'SipTenderTests' do
     inherit! :complete
     # Pods for testing

@@ -1,9 +1,13 @@
-import { StyleSheet, Text, View, ImageBackground, Image } from 'react-native';
+import { StyleSheet, Text, View, ImageBackground, Image, BackHandler, Alert } from 'react-native';
 import React from 'react';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import RNExitApp from 'react-native-exit-app';
 
 export default class UserPage extends React.Component{
+  backAction = () => {
+    RNExitApp.exitApp();
+  };
 
   render() {
     return(
@@ -27,7 +31,7 @@ export default class UserPage extends React.Component{
               <Icon name="vpn-key" size={30} color="#ffffff" />
             </View> 
           </TouchableOpacity>
-          <TouchableOpacity >
+          <TouchableOpacity onPress={() => this.backAction()} >
             <View style={styles.btn}>
               <Text style={styles.textbtn}>Sair</Text>
               <Icon name="logout" size={30} color="#ffffff" />
